@@ -42,20 +42,24 @@ exports.createTour = (req, res) => {
 
     tours.push(newTour);
 
-    fs.writeFile(`${__dirname}/dev-data/data/tours-simple.json`, JSON.stringify(tours), err => {
-        res.status(201).json({
-            status: 'success',
-            data: {
-                tour: newTour,
-            },
-        });
-    });
+    fs.writeFile(
+        `${__dirname}/dev-data/data/tours-simple.json`,
+        JSON.stringify(tours),
+        (err) => {
+            res.status(201).json({
+                status: 'success',
+                data: {
+                    tour: newTour,
+                },
+            });
+        }
+    );
 };
 
 exports.getTour = (req, res) => {
     console.log(req.params);
     const id = req.params.id * 1;
-    const tour = tours.find(e => e.id === id);
+    const tour = tours.find((e) => e.id === id);
 
     res.status(200).json({
         status: 'success',
