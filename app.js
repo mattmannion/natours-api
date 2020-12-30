@@ -16,7 +16,7 @@ app.use(express.json());
 app.use(express.static(`${__dirname}/public`));
 
 app.use((req, res, next) => {
-  console.log('Something happened on the Server!');
+  // console.log('Something happened on the Server!');
   next();
 });
 
